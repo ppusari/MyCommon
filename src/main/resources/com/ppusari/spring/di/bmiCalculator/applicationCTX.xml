@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 	
+ 	<!-- BMICalculator 객체 사용 -->
+	<bean id="bmiCalculator" class="com.ppusari.spring.di.bmiCalculator.BMICalculator">
+		<property name="lowWeight" value="18.5"/>    <!-- 프로퍼티 네임을 클래스 변수와 같도록 해야 매핑된다. -->
+		<property name="normal" value="23"/>         <!-- 데이터 타입은 모두 value로 통일된다 -->
+		<property name="overWeight" value="25"/>	
+		<property name="obesity" value="30"/>
+	</bean>
+	
+	<!-- property로 등록하면 setter, getter 로 집력됨 -->
+	<bean id="myInfo" class="com.ppusari.spring.di.bmiCalculator.MyInfo">	
+		<property name="name">
+			<value>조병국</value>
+		</property>
+		<property name="height">
+			<value>175</value>		 
+		</property>				
+		<property name="weight">
+			<value>72</value>		 
+		</property>
+		<property name="hobbys">
+			<list>
+				<value>장기</value>
+				<value>티비</value>
+				<value>독서</value>
+			</list>
+		</property>
+		<property name="bmiCalculator" ref="bmiCalculator"/>
+	</bean>
+	
+	<!-- constructor-arg 로 사용하면 생성자로 입력됨-->
+	<bean id="myInfo2" class="com.ppusari.spring.di.bmiCalculator.MyInfo">
+		<constructor-arg value="고양이"/>
+		<constructor-arg value="167"/>
+		<constructor-arg value="59"/>
+		<constructor-arg>
+			<list>
+				<value>걷기</value>
+				<value>울기</value>
+			</list>			
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="bmiCalculator"/>
+		</constructor-arg>		
+	</bean>
+	
+	 
+	 	
+	 	
+</beans>

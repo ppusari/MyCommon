@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+var check = function(){
+	var data = document.getElementById('data').value;
+	if (data.length  <= 5){
+		alert('너무 짧아요');
+	} else{
+		if (isNaN(data)){
+			alert('숫자만 넣어라.');			
+		}else{
+			alert(data.toUpperCase());
+		}				
+	}
+};
+	
+</script>
+
+</head>
+<body>
+	<input type="text" id="data"><br>
+	<h3 onclick="check();">click</h3>
+
+</body>
+</html>

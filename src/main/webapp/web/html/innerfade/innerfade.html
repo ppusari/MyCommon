@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script src="jquery.innerfade.js"></script>
+<script>
+$(document).ready(function(){
+ 
+ 	$('#myimg').innerfade({
+		speed: 'slow',
+		timeout: 4000,
+		type: 'random',
+		containerheight: '220px'
+	});
+	
+});	
+</script>
+</head>
+<body>
+<ul id="myimg">
+	<li><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzbtIBGU80HPXFE0bBgob6q3W1RDtRFLiygMoPbSJtl00Ho7r1"></li>
+	<li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEOXinCV-QVikZJf2Tg8B_QH_L0GnXXHyBgEweWszafvXVLFZFvQ"></li>	
+	<li><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3r18QUmwi5hyeVeDZNuCMp-5huF0ebAFrVTDnTEjmRvskd38X9A"></li>		
+	<li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZfcYwYtXWN-ipjV0l-GT6gSs6f7ENJxpYEzA7xXUJ-ANShVx"></li>
+</ul>
+
+</body>
+</html>

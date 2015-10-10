@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+	var h2 = document.querySelector('h2');
+	h2.onclick = function(){
+		
+		var sh = document.querySelectorAll('h1');
+		
+		var s1 = setInterval(function(){
+				sh[0].innerHTML += '*'
+			}, 200);
+		var s2 = setInterval(function(){
+			sh[1].innerHTML += '*';
+		}, 800);
+		var s3 = setInterval(function(){
+			sh[2].innerHTML += '*';
+		}, 300);
+		
+		setTimeout(function(){
+			clearInterval(s1);
+			clearInterval(s2);
+			clearInterval(s3);
+		}, 5000)
+				
+//		for (int = i; i < sh.length; i++){
+//			alert(sh[i].innerHTML += '*');
+//		}		
+	}; 	
+};
+</script>
+
+</head>
+<body>
+<h2>click</h2>
+<h1>Header1</h1>
+<h1>Header2</h1>
+<h1>Header3</h1>
+
+</body>
+</html>

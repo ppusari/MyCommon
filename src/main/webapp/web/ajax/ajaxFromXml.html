@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+	
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+
+function display(data){
+	alert(data);
+	var output = '';
+	output += '<table><tr><th>ID</th><th>NAME</th><th>AGE</th></tr>'
+
+	$(data).find('person').each(function(){
+		var id = $(this).find('id').text();
+		var name = $(this).find('name').text();
+		var age = $(this).find('age').text();
+		
+		output += '<tr>';
+		output += '<td>' + id   + '</td>';
+		output += '<td>' + name + '</td>';
+		output += '<td>' + age  + '</td>';
+		output += '</td>';
+	});
+	
+	$('div').append(output);
+};
+
+$(document).ready(function(){
+	var uri = 'http://localhost:8080/WebStudy/server/xml.jsp';
+
+	//$.ajax({url, type, success, error});
+	$.ajax({
+		url:encodeURI(uri),
+		type: 'POST',
+		success: function(data){ // text로 넘어오지 않고 dom으로 내려온다.
+			
+			display("dom: " + data);
+		},
+		error: function(err){
+			alert("a " + err);			
+		}
+	});
+			
+});	
+</script>
+</head>
+<body>
+<div></div>
+
+</body>
+</html>

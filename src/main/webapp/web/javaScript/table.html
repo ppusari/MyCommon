@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<style>
+	.c{		
+		background-color: green;
+		color: yellow;
+	}	
+</style>
+
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+// 	$('tr:nth-child(2n)').css('background','pink');
+// 	$('tr:nth-child(2n+1)').css('background','cyan');
+// 	$('table > tbody > tr > th').css('background','gray');
+// 	$('tr').eq(5).css('background','red');
+	$('table').css('border','2px solid red');	
+	$('tr:odd').css('background','pink');
+	$('tr:even').css('background','cyan');
+	$('tr').eq(0).css({
+		'background':'black',
+		'color':'white'
+	})	
+	
+	$('tr').hover(function(){
+		$(this).addClass('c');		
+	}, function(){
+		$(this).removeClass('c');		
+	});
+	
+	
+//	$('div > #id').attr('readonly','true');	 
+		
+});	
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>PWD</th>
+		<th>NAME</th>
+	</tr>
+	<tr>
+		<td>id01</td>
+		<td>pwd01</td>
+		<td>조병국</td>		
+	</tr>
+	<tr>
+		<td>id02</td>
+		<td>pwd02</td>
+		<td>조병국2</td>		
+	</tr>
+	<tr>
+		<td>id03</td>
+		<td>pwd03</td>
+		<td>조병국3</td>		
+	</tr>
+	<tr>
+		<td>id04</td>
+		<td>pwd04</td>
+		<td>조병국4</td>		
+	</tr>
+	<tr>
+		<td>id05</td>
+		<td>pwd05</td>
+		<td>조병국5</td>		
+	</tr>
+</table>
+
+<div>
+
+</div>
+</body>
+</html>

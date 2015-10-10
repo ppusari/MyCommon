@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#login').click(function(){
+		var id = $('#id').val();
+		var pwd = $('#pwd').val();
+		alert(id);		
+		$('#id').val('OK');		
+	})
+});
+	
+</script>
+</head>
+<body>
+
+<!-- 아래는 form 이 없다. ID로 핸들링 하겠다 -->
+ID<input type="text" id="id"><br>
+PWD<input type="password" id="pwd"><br>
+<input type="button" value="LOGIN" id="login">
+
+</body>
+</html>

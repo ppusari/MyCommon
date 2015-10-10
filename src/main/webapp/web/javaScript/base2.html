@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var v1 = 10;
+	var v2 = 10.2;
+	var v3 = '"a"';
+	var v4 = "a";
+	var v5 = []; // Array
+	var v6 = {}; // Object
+	var v7 = function(a){ return 200+100+a;};
+	document.writeln(v7(100));
+	document.writeln(v7('100'));	
+	var v8 = true;
+	var v9 = (0>20>10); /* ((30>20)>10) 의미이다. */	
+	var v10 = [1,'2', true, {}, function(){}];
+	for(var i in v10){
+		document.writeln(v10[i]);		
+	}	
+	
+	var v11;
+	v11 = {
+			id:'id01',
+			pwd:'pwd01',
+			name:'조병국',
+			print:function(){
+				return this.id+' ' +this.name;
+			}
+		};
+	
+	document.write('<h1>' + v11.print() + '</h1>');
+		
+//	alert(v9);	
+//	alert(Number('4') + Number('2'));
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

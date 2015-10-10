@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('textarea').keydown(function(){
+		var input = $(this).val().length;
+		var remain = 50 - input;
+		
+		if (remain < 0)
+			alert('더이상 입력할 수 없습니다.');
+		else
+			$('h2').text(remain); 
+
+	});	
+});	
+</script>
+</head>
+<body>
+	<h1>입력하세요</h1>
+	<h2>50</h2>
+	<textarea rows="5" cols="70"></textarea>
+</body>
+</html>

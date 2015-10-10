@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+
+	#div1{
+		width:300px; height:80px;
+		background: green;
+	}
+	div{
+		width:100px; height:100px;
+		background: yellow;
+	}
+	
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('body').append('<h3>');	// body 다음에 추가.
+		$('body').append('<h3>');
+		$('body').prepend('<h2>');	// 맨앞에 넣음.
+		$('h2').text('Header2');
+		$('h3').eq(0).text('Header3-1');
+		$('h3').eq(1).text('Header3-2');
+		
+		$('body').append('<div>');
+		$('body').append('<div>');
+		
+		$('body > div:eq(0)').html('<h3> HEADER3-1</h3>');
+		$('body > div:eq(1)').html('<h3> HEADER3-2</h3>');
+		
+		$('div:eq(0)').empty(); 	// 테그는 살아있고 내용만 지우는것.
+		$('div:eq(1)').remove(); 	// 날려 버리는것.  $('div:last-child').remove();
+ 	
+		
+		var output = '';
+		output += 'ID<input type="text" id="id"><br>';
+		output += 'PWD<input type="text" id="pwd"><br>';
+		output += '<input type="button" value="REGISTER">';
+		$('#div1').html(output);	// var 객체에 있는것은 html로 넣는다.
+		
+		
+	});
+</script>
+</head>
+<body>
+<div id="div1"></div>
+
+</body>
+</html>

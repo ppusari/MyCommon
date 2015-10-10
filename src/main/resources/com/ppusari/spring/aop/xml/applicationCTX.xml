@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="logAop" class="com.ppusari.spring.aop.xml.LogAop"/>
+	
+	<!-- AOP를 사용하기 위한 사전 준비사항
+		1. 의존설정: pom.xml에  AOP를 등록
+		2. Namespaces 등록: aop를 등록한다. 
+	-->
+	<aop:config>	
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(com.ppusari.spring.aop.xml.*)" id="publicM"/> <!-- 핵샘코드가 있는곳 (이부분에서 공통기능을 넣고 뺄 수 있다)-->
+			<aop:around method="loggerAop" pointcut-ref="publicM"/>     <!-- 어떤 기능을 줄것인가 -->
+		</aop:aspect>
+
+		<!-- Advice 종류 5가지 () -->
+		<!--
+ 		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop.xml.*)" id="publicM"/>
+			<aop:around method="beforeAdvice" pointcut-ref="publicM"/>
+		</aop:aspect>
+
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop.xml.*)" id="publicM"/>
+			<aop:around method="afterReturningAdvice" pointcut-ref="publicM"/>
+		</aop:aspect>
+
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop.xml.*)" id="publicM"/>
+			<aop:around method="afterThrowingAdvice" pointcut-ref="publicM"/>
+		</aop:aspect>
+
+		<aop:aspect id="logger" ref="logAop">
+			<aop:pointcut expression="within(aop.xml.*)" id="publicM"/>
+			<aop:around method="afterAdvice" pointcut-ref="publicM"/>
+		</aop:aspect>		
+		 -->
+	</aop:config>
+	
+	<bean id="student" class="com.ppusari.spring.aop.xml.Student">
+		<property name="name" value="조병국"/>
+		<property name="age" value="10"/>
+		<property name="gradeNum" value="3"/>
+		<property name="classNum" value="5"/>
+	</bean>
+	
+	<bean id="worker" class="com.ppusari.spring.aop.xml.Worker">
+		<property name="name" value="고양이"/>
+		<property name="age" value="7"/>
+		<property name="job" value="도둑"/>
+	</bean>
+	
+</beans>

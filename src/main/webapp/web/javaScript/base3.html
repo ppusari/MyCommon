@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	#result{
+		background: yellow;
+	}
+</style>
+
+<!-- Body가 시작하기 전에 script 가 동작한다. -->
+<script>
+//	var result = prompt('숫자를 입력하세요','3');
+//	var a = parseInt(result);
+//	alert(a+100);
+
+
+	function calc(){
+		var data1 = document.getElementById('data1').value;
+		var data2 = document.getElementById('data2').value;
+		var result = parseInt(data1) + parseInt(data2);
+		var resultArea = document.getElementById('result');
+		resultArea.innerHTML = result;
+	};
+
+</script>
+
+</head>
+<body>
+<h3> Header에 있는 Script가 실행된 후 body가 실행됨 </h3>
+
+<h1>Calculator</h1>
+<form>
+	Data1<input type="text" id="data1"><br>
+	Data1<input type="text" id="data2"><br>
+	<input type="button" value="calculation" onclick="calc();"><br>
+	<h2 id="result">Result</h2>	
+	
+</form>
+
+</body>
+</html>

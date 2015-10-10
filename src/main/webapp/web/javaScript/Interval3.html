@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+
+	var percentage = document.querySelector('#percentage');	
+	var downloadState = setInterval(function(){ 
+		percentage.innerHTML += '*';		
+	}, 1000);	
+}
+</script>
+</head>
+<body>
+
+<div>
+	<h1 id="percentage"></h1>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#cart {
+	width: 600px;
+	height: 150px;
+	padding: 10px;
+	border: 2px dotted red;
+}
+
+#item {
+	width: 600px;
+	height: 150px;
+	padding: 10px;
+	border: 2px dotted red;
+}
+
+img {
+	width: 100px;
+	height: 150px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var img = document.querySelector('#item');
+		var cart = document.querySelector('#cart');
+
+		
+		item.ondragstart = function(event) {
+			var id = event.target.id;
+			console.log("Drag start: " + id);
+			event.dataTransfer.setData("user", id);	// 객체를 넣어둔다.
+		};
+
+		// ondrop을 발생시키기 위해 preventDefault() 함수를 추가한다.
+		cart.ondragover = function(event){
+			event.preventDefault();
+		};		
+		// drageover 먼저 발생하여 아래쪽으로 호출이 못된다. 그래서  preventDefault을 사용하여 제거해야한다.
+		cart.ondrop = function(event){
+			console.log("Drop end: " + event.target.id);
+			var id = event.dataTransfer.getData("user");
+			event.target.appendChild(document.getElementById(id));			
+		};
+		
+		cart.ondragstart = function(event){
+			var id = event.target.id;
+			console.log("Cart Drag start: " + id);
+			event.dataTransfer.setData("user", id);	// 객체를 넣어둔다.
+		};
+		
+		item.ondragover = function(event){
+			event.preventDefault();
+		};
+		
+		item.ondrop = function(event){
+			console.log("Drop end: " + event.target.id);
+			var id = event.dataTransfer.getData("user");
+			event.target.appendChild(document.getElementById(id));	
+		};
+	});
+</script>
+</head>
+<body>
+	<h1>Drag & Drop TEST</h1>
+	<div id="cart"></div>
+	<div id="item">
+		<img id="img1" draggable="true"
+			src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzbtIBGU80HPXFE0bBgob6q3W1RDtRFLiygMoPbSJtl00Ho7r1">
+		<img id="img2" draggable="true"
+			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEOXinCV-QVikZJf2Tg8B_QH_L0GnXXHyBgEweWszafvXVLFZFvQ">
+		<img id="img3" draggable="true"
+			src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3r18QUmwi5hyeVeDZNuCMp-5huF0ebAFrVTDnTEjmRvskd38X9A">
+		<img id="img4" draggable="true"
+			src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZfcYwYtXWN-ipjV0l-GT6gSs6f7ENJxpYEzA7xXUJ-ANShVx">
+		<img id="img5" draggable="false"
+			src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQSq29kc_FzaLvJyEFZ9ag0IEI4dKhya2pUJF8Kw_gv5V46YCC2Xw">
+	</div>
+</body>
+</html>

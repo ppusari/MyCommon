@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	#area > div{
+		width:500px; height:50px;
+		margin:20px;
+		background: yellow;
+	}	
+	.h{
+		border:2px solid red;
+		background: white;
+	}
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+$(document).ready(function(){	
+	
+	$('body > div').attr('id', 'area');
+	
+	$('a:eq(0)').click(function(){
+		
+		$('#area').append('<div>');
+		var output = '';
+		output += 'ID<input type="text" id="id">';
+		output += 'PWD<input type="text" id="pwd">';
+		output += '<input type="button" value="REGISTER">';
+		$('#area > div').html(output);
+		
+		$('#area > div').hover(function(){		
+			$(this).addClass('h');		
+		}, function(){
+			$(this).removeClass('h');
+		});
+		
+	});
+	$('a:eq(1)').click(function(){
+		$('#area > div:last-child').remove();		
+	});
+	
+});
+	
+</script>
+</head>
+<body>
+	<a href="#">ADD</a>
+	<a href="#">DEL</a>
+	<div></div>
+</body>
+</html>

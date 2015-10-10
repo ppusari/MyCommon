@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 객체1 -->
+	<bean id="student1" class="com.ppusari.spring.di.student.Student">
+		<constructor-arg value="조병국"/>
+		<constructor-arg value="10"/>
+		<constructor-arg>
+			<list>
+				<value>장기</value>
+				<value>게임</value>
+			</list>
+		</constructor-arg>	
+		<property name="height" value="174"/>
+		<property name="weight">
+			<value>72</value>
+		</property>
+	</bean>
+	
+	
+	<!-- 객체2 -->
+	<bean id="studentInfo" class="com.ppusari.spring.di.student.StudentInfo">
+		<property name="student">
+			<ref bean="student1"/>
+		</property>
+	</bean>
+	 	
+	 	
+</beans>

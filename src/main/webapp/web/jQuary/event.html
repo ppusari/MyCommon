@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<style>
+	.c{
+		background: red;
+		color: yellow;
+	}
+	
+</style>
+<script>
+$(document).ready(function(){
+	
+  
+ 	// 여러게의 이벤트를 집어 넣을때 on 을 사용한다.
+	$('h1').on({
+		click:function(){
+			$(this).text($(this).text() + '*');			
+		},
+		mouseenter:function(){
+			$(this).addClass('c');			
+		},
+		mouseleave:function(){
+			$(this).removeClass('c');			
+		},
+	}); 	
+	$('h1').eq(1).off();
+ 
+	
+/* 	$('h1').click(function(){
+		$(this).text($(this).text() + '*');
+	};
+	
+	$('h1').hover(function(){
+		$(this).addClass('c');
+	}, function(){
+		$(this).removeClass('c');
+	}); */
+	
+	
+	$('#id').focus(function(){
+		$(this).css('background','pink');
+	});
+	$('#id').blur(function(){
+		$(this).css('background','white');
+	});
+	
+});	
+</script>
+</head>
+<body>
+ID<input type="text" id="id">
+<h1>Header1</h1>
+<h1>Header2</h1>
+<h1>Header3</h1>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+	a(); // function 뒤에 함수명 이 있으면 밑에 있어서 실행할 수 있다.	
+
+	function a(){		
+		alert('a');		
+	};
+	var b = function(){
+		alert('b');
+	};
+	
+	var b = function(){
+		alert('b1');
+	};
+	
+	b(); // b라는 함수는 아직 할당된 변수가 아니기 때문에 실행하는 함수는 밑에 있어야 한다.	 
+	
+//-----------------------------------------------------------------------------	
+	// 리턴 함수가 정의되지 않게 할 수 있다.
+	function c(i)
+	{
+		if (i==0)
+			return "abc";
+		else
+			return 123;
+	};
+	
+	c(1);
+	
+	//-----------------------------------------------------------------------------
+	
+	var d = function(){
+		return 300;
+	}
+	var e = function(i){
+		alert('a : ' + i()*2);  // i() == 300 이다.  괄호를 넣어야 값이 적용됨.
+	}
+	e(d);
+	
+</script>
+
+</head>
+<body>
+</body>
+</html>

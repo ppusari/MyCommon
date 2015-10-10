@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#d1{
+		width:400px; 
+		height:400px;
+		border:3px solid black;
+		position:relative;	
+		overflow:scroll;
+	}
+	.box{
+		width:200px; 
+		height:200px;
+		border:1px solid black;	
+		position:absolute;
+		opacity:0.5;
+	}
+	.box:nth-child(1){
+		background:red;
+		top:20px;
+		left:20px;	
+		z-index:10;		
+	}
+	.box:nth-child(2){
+		background:blue;
+		top:100px;
+		left:100px;
+		z-index:1;			
+	}
+	.box:nth-child(3){
+		background:green;
+		top:250px;
+		left:250px;
+		z-index:100;
+	}
+	img{
+		float:left;
+		margin:20px;
+	}
+
+
+
+</style>
+</head>
+<body>
+<h1> Layout Test</h1>
+
+<div id="d1">
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+</div>
+<h1>Position Test</h1>
+<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTpJKT2hLlhXXBy-kVM-GqgtUqrU9TNHmeBtqkFFdbKhgL-fDL5">
+<h2>Position TEST Position TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TEST Position TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TESTPosition TEST</h2>
+
+</body>
+</html>

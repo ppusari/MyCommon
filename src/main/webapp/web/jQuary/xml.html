@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+var persons = '';
+persons += '<persons>';
+	persons += '<person>';
+		persons += '<id>ppusari1</id>';
+		persons += '<pwd>1234</pwd>';		
+	persons += '</person>';	
+	persons += '<person>';
+		persons += '<id>ppusari2</id>';
+		persons += '<pwd>2234</pwd>';		
+	persons += '</person>';
+	persons += '<person>';
+		persons += '<id>ppusari3</id>';
+		persons += '<pwd>3234</pwd>';		
+	persons += '</person>';
+persons += '</persons>';
+
+$(document).ready(function(){
+ 	var xmlDoc = $.parseXML(persons);		// XML일반 스트링에서 돔 형태로 바꾸는 jQuary 함수
+	var person = $(xmlDoc).find('person');	// 돔 객체를 find한다.
+	var output = '';
+	
+	$(person).each(function(){
+		var id = $(this).find('id').text();
+		var pwd = $(this).find('pwd').text();
+		
+		output += '<p>';
+		output += id + ' ' + pwd;
+		output += '</p>'		
+	}); 
+	
+	$('div').html(output);  // var 객체에 담겨있는것을 넣을 때는 html 이다. 
+});	
+</script>
+</head>
+<body> 
+<div></div>
+</body>
+</html>

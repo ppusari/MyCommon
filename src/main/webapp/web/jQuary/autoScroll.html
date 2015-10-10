@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+ 
+function makeItem(){	
+	for (var i= 0; i < 10; i++) {
+		$('body').append('<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzbtIBGU80HPXFE0bBgob6q3W1RDtRFLiygMoPbSJtl00Ho7r1">');		
+	}
+}; 
+
+$(document).ready(function(){
+	
+	makeItem();
+	
+	$(window).scroll(function(){
+		var scrollH = $(window).scrollTop() + $(window).height();
+		var docH = $(document).height();
+		if (scrollH + 40 >= docH){
+			makeItem();		
+		}	
+	});
+});	 
+
+$(document).ready(function(){	
+	makeItem();
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>

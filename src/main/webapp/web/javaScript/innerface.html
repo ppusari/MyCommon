@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>외부 자바스크립트를 가져다가 사용하는 예제</title>
+
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script src="jquery.innerfade.js"></script>
+<script>
+$(document).ready(function(){
+		
+	$('#myimg').innerfade({
+		speed: 'slow',  // (slow, normal or fast)(Default: 'normal'),
+		timeout: 2000,	// (Default: '2000')
+		type: 'sequence',	// 'sequence', 'random' or 'random_start' (Default: 'sequence'),
+		containerheight: '220px',  //  (Default: 'auto')
+		runningclass: 'innerfade'
+	});
+	
+});	
+</script>
+</head>
+<body>
+
+<!-- http://medienfreunde.com/lab/innerfade/ 참고 -->
+<ul id="myimg">
+	<li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjzVURhMx8M9o3gwSuj7VES95HyvXVukC0vzTXOggRZBORxoUWkg"></li>
+	<li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCP7yPNxnfKs_DkOubL5QmUnFExL50X-tc35jUpAYFZA0REjUwHg"></li>	
+	<li><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTJnWnX4FtjVxphoXKqVk3VbT1O2VA-0MFEPVsxSyHa-Wxm0mainA"></li>		
+	<li><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQowto4agEsZ3xB4jK9PpfsxSmLA9NOPAdoOk2V78HO_0OyYfPUrQ"></li>
+	<li><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSwKo2z6bVsGUGl7npKtbKS5oYgX7Hzpdgl2pI9zfc3X50gGNRz"></li>	
+</ul>
+<img src="/resources/png/cat.png">
+</body>
+</html>

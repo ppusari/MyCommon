@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		
+		var cnt = 0;
+		var repeat = setInterval(function(){
+						
+			//alert("a");
+			console.log("Drag start: " + cnt);	// chrome F12에서 확인가능함.
+			if (cnt++ == 3){
+				clearInterval(repeat);
+			} 
+		}, 2000);
+	};
+</script>
+</head>
+<body>
+
+</body>
+</html>

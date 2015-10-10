@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+// 자바 스크립트는 전역변수를 되도록이면 사용하지 말아야한다.
+// 이유는 모듈단위로 복사해서 사용하기 때문에.
+
+var createRequest = function(){
+	var xhr = null;	
+	try {
+		xhr = new XMLHttpRequest();	
+	} catch (e) {
+		xhr = new ActiveXObject('Msxml2.XMLHTTP7.0');
+	}
+	return xhr;
+};
+
+var loginCheck = function(result){
+	
+	alert('aa: '+result);
+	var resultArea = document.querySelector('#resultArea');
+	if (result == "LOGIN_OK"){
+		var login = document.querySelector('#login');
+		
+		document.body.removeChild(login);
+		resultArea.innerHTML = 'Login OK';		
+	} else {
+		resultArea.innerHTML = 'Login faile';		
+	}	
+};
+
+var requestAjax = function(id, pwd){
+		
+	var xhr = createRequest();
+	
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200){ // 정상
+				var result = xhr.responseText;
+				result = result.trim();
+				loginCheck(result);		
+			}
+			else{
+				alert('error:' + xhr.status )
+			}
+		}
+	};
+
+	var uri = 'http://localhost:8080/WebStudy/server/login.jsp';	
+	uri += '?id=' + id + '&pwd=' +pwd;
+	
+	alert(uri);
+	
+	xhr.open('GET',uri,false);
+	xhr.send(); // 보내고 받으면
+};
+
+var login = function(f){
+	
+	var id = f.id.value;
+	var pwd = f.pwd.value;
+	
+	if (id == null || id == '') {
+		alert("ID is mandatory");
+		id.focus();
+		return;	
+	}
+	
+	if (pwd == null || pwd == '') {
+		alert("ID is mandatory");
+		pwd.focus();
+		return;	
+	}
+	
+	var c = confirm('Login OK?');
+	if (c == true){
+		requestAjax(id, pwd);		
+	} 
+	
+}; 
+
+</script>
+
+<div id="login">
+	<form>
+		ID<input type="text" name="id"><br>
+		PWD<input type="text" name="pwd"><br>
+		<input type="button" value="Login" onclick="login(this.form)">		
+	</form>
+</div>
+
+<div id="resultArea"></div>
+
+</head>
+<body>
+
+</body>
+</html>

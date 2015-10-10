@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 스타일이 중복되면 먼저 선언된것이 적용되고 나머지는 무시된다. -->
+<style type="text/css">
+
+/* 전체 선택자 */
+* {
+	background-color: white;
+}
+
+/* 타입 선택자 */
+h1 {
+	color: blue;
+}
+
+/* 아이디 선택자 */
+#id {
+	color: red;
+}
+
+/* h2요소중에 아이디가 special 인것만 적용 (후손관계:자손모두 적용됨) */
+h2#special {
+	color: green;
+}
+
+/* div 중에 p 타입만 적용 (자식관계:자손 모두가 아니라 바로밑 자식만 적용됨) */
+div>p {
+	color: red;
+}
+
+/* 클래스 선택자 */
+.cls {
+	color: purple;
+}
+
+/* 선택자 그룹 */
+h3, h4 {
+	background: aqua;
+}
+
+/* 의사 클래스 */
+a:LINK {
+	color: yellow;
+}
+
+a:VISITED {
+	color: green;
+}
+
+a:HOVER {
+	color: red;
+}
+
+/* 속성 선택자 */
+h2[onclick] {
+	background: purple;
+} /* h2중에 onclick속성이 있는것만 */
+h3[class="cls"] {
+	text-align: center;
+} /* h3중에 클래스가 cls 인것만 */
+
+input:focus {
+	background: pink;
+}
+</style>
+
+</head>
+<body>
+	<p>
+		<font size="5" color="green" face="굴림"> 예전에는 이렇게 폰트를 지정하였습니다. </font>
+	</p>
+
+	<h1>스타일 적용1</h1>
+	<h2 id="id">스타일 적용2</h2>
+	<h2 id="special" onclick="#">스타일 적용2</h2>
+	<h3 class="cls">스타일 적용3</h3>
+	<h3 class="cls1">스타일 적용3.5</h3>
+	<h4 class="cls">스타일 적용4</h4>
+
+	<div>
+		<p>test1</p>
+		<h4>test2</h4>
+	</div>
+
+	<a href="#">link2</a>
+
+	<br><input type="text">
+	<br><input type="text">
+	<br><input type="text">
+	
+</body>
+</html>

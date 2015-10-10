@@ -1,0 +1,232 @@
+ 
+<contents>
+	<todo>
+	 - servlet에서 controller부분 
+	 - kt에서 만든 test 소스 java에 추가
+	 - 스프링 시큐리티 jdbc적용된 SfsAdmin을 가져다가 추가해보자.(클래스로 로딩하는 방법 도 추가?)
+	 - my.spring.controller 에서 분리할것을 판단후 이동시켜보자.
+	 - restful 을 위해 custom-filter 을 검색해보자.
+	 - weather 를 web페이지 형태로 만들고 xml로 좌표를 가져온다음 이뿌게 뿌려보자.(java에 있는것은 최소만 남기자)
+	 - servlet 프로젝트에 정리되어있음 ( 쿠키, 세션, db접근방법 ... )
+	 - transcation (동영상 강좌 참고)	 
+	</todo>
+	
+	<tip>
+	 - 이클립스 설명: http://help.eclipse.org/luna/index.jsp
+	 - 단축키 #1 : http://blog.naver.com/since201109/150174231148
+	 - 단축키 #2 : http://goo.gl/06cAoN
+	 - 클래스 / 시퀀스 다이어그램 : http://yonomi.tistory.com/144
+	 - 디버그 사용법 #1 : http://spoqa.github.io/2012/03/05/eclipse-debugger.html
+	 - 디버그 사용법 #2 : http://goo.gl/9WmhR6
+	 - 메모리 누수 분석 : http://spoqa.github.io/2012/02/06/eclipse-mat.html
+	 - Clean : http://goo.gl/e98A37
+	 - 컴파일 없이 코드 테스트 하기 : http://goo.gl/8ZkiZA
+	 - 이클립스 프로젝트 익스플로러 아이콘 의미 : http://goo.gl/VlfyNT
+	 - 이클립스의 대표적인 View : http://okjsp.tistory.com/1165643261
+	 - 이클립스 팁 : http://goo.gl/iPzhfS
+	 - 패키지 만든 후 가장먼저 해야할 사항리스트 정리 (Preferences -> General -> Workspace-> Text file encoding -> UTF-8로 변경)
+	 - web.xml 설명: http://everlikemorning.tistory.com/entry/%EA%B0%84%EB%8B%A8%ED%95%9C-Spring-MVC%EC%84%A4%EC%A0%95ControllerClassNameHandlerMapping
+	 - 스프링 context:component-scan 분석 http://thswave.github.io/spring/2015/02/02/spring-mvc-annotaion.html
+	</tip>
+	   
+	<테스트>	 
+	 - http://localhost:8888/my/   --기본접근
+	 - http://localhost:8888/my/web/html/base.html -- web기본접근 (html을 테스트 할경우 web.xml에 url-pattern 을 변경해야 가능함)
+	</테스트>
+   
+   	<용어정리>
+   	Spring이란?
+	 - 부품을 생성하고 조립하는 라이브러리 집합체 이다.
+	
+	 용어정리
+	 - DI (Dependency Injection): 객체를 직접 만들지 않고 외부에서 만들어서 넣어준걸 처리하는 것
+	 - IOC 컨테이너: 객체들을 담고 있는 것.
+	 - AOP (Aspect Oriented Programming) : 핵심기능과 공통 기능을 분리 시켜놓고 공통 기능을 필요로 하는 핵심 기능들에서 사용하는 방식	 
+	</용어정리>
+  	
+  	<com.ppusari>
+  	
+  		<bean xmlns="JSP에서  역으로 호출됨"/>
+  		  	
+  		<database xmlns="JSP에서  역으로 호출됨" />
+  	
+  		<java xmlns="각종예제">  		
+  		</java>
+  	
+	  	<servlet xmlns="사용자 서블릿">
+	  		http://localhost:8888/my/MyServlet  		  	
+	  	</servlet>
+	  	  	
+  		<my xmlns="기본 서블릿">
+  	  		  		 
+  			<controller xmlns="스프링기반 컨트롤러">
+  			참조: #A-1 (스프링 컨트롤러 접근 순서 설명)
+  				<!--
+  				http://localhost:8888/my/basic/view <- 컨트롤러 호출
+				http://localhost:8888/my/basic/content <- Model 이용
+				http://localhost:8888/my/basic/reply <- ModelAndView 이용
+				http://localhost:8888/my/basic/confirmid?id=ppusari&pw=1234 <- 값 받아와서 전달하기
+				http://localhost:8888/my/basic/checkid?id=test&pw=12345 <- @에노테이션을 이용하여 받아오는 방법
+				http://localhost:8888/my/basic/join?name=조병국&id=ppusari&pw=1234&email=ppusari@gmail.com <- 사용자 정의 클래스 이용하는 방법
+				http://localhost:8888/my/basic/student/8 
+				
+				@RequestMapping에서  Get방식과 Post방식
+				 - http://localhost:8888/my/requestMapping/index <- #3-1에 호출됨
+				 
+				@ModelAttribute (커맨드 객체의 이름을 변경할 수 있다)
+				 - http://localhost:8888/my/modelAttribute/index <- #4-1에 호출됨
+				 
+				 리다이렉트 (로그인 처리시 많이 사용하는 방법)
+				 - http://localhost:8888/my/redirect/studentConfirm?id=ppusari  (값이 없으면 500에러가 발생됨)
+				  
+				 데이터 검증 (규칙에 맞는 값이 변수에 잘 들어갔는지 체크하는 것)
+				 - http://localhost:8888/my/validator/studentForm
+				 - http://localhost:8888/my/initBinder/studentForm  <- 이방법을 더 많이 사용함.			 				
+				--> 			 
+  			</controller>  	 
+  		
+  			<mvc2 xmlns="MVC 패턴 예제">
+  			http://localhost:8888/my/list 
+  			참조: mvc_board.sql 			
+  			</mvc2>  		
+  		
+  			<mvc2_jdbc xmlns="JDBC를 이용항 쿼리문 소스 줄이기">
+  			http://localhost:8888/my/mvc2_jdbc/list
+  			설정 참조: #jdbc-1, mvc_board.sql
+  			</mvc2_jdbc>
+  		
+  			<mybaties xmlns="마이바티스 예제">
+  			http://localhost:8888/my/mybatis/list
+  			설정참조: #mybatis-1, board.sql
+  			</mybaties>
+  			
+  			<security xmlns="스프링 시큐리티">
+  				이거 따로 만들어야 하나??
+  				http://localhost:8888/my/security/login 이렇게 하면 로그인 되어있다고 함
+  			</security>
+  			  	
+  		</my>
+  	
+  		<spring>
+  		
+  			<aop>
+  			1. di.bmiCalculator(4강)
+			 - DI 프로퍼티 설정
+			 
+			2. di.student (5강, 6강)
+			 - ㅡI 의존관계
+			
+			3. di.pencil (5강)
+			 - DI 사용에 따른 장범
+			
+			4. di.applicationiConfig (6강)
+			 - Java를 이용한 DI 설정방법
+			
+			5. di.javaInXml (6강)
+			 - Xml파일에 Java파일을 포함시켜 사용하는 방법
+			
+			6. di.xmlInJava (6강)
+			 - Java파일에 xml파일을 포함시켜 사용하는 방법
+			
+			7. di.lifeCycle (7강)
+			 - DI 객체 생명주기
+			 - scope 범위 설정
+			
+			8. di.property.fromExternFile (8강)
+			 - Environment객체(외부 파일)를 이용해서 spring bean 설정  
+			
+			9. di.property.direct.xml  (8강) 
+			 - Environment객체(외부파일)를 사용하지 않고 property 파일을 직접 이용하여 스프링 빈을 설정 xml방식
+			
+			10. di.property.direct.java (8강)
+			 - Environment객체(외부파일)를 사용하지 않고 property 파일을 직접 이용하여 스프링 빈을 설정 java방식
+			 
+			11. di.property.profile.xml (8강) 
+			 - 개발환경에 따라 어떤 profile을 사용할 것인지 판단 xml 방식
+			
+			12. di.property.profile.java (8강)
+			 - 개발환경에 따라 어떤 profile을 사용할 것인지 판단 java 방식
+  			</aop>
+  			
+  			<di>
+  			aop.xml (9강)
+			 - 사용자가 만든 함수 앞뒤에 내가 원하는 코드들을 공통으로 적용할 때. 
+			 
+			aop.java (10강)
+			 - 사용자가 만든 함수 앞뒤에 내가 원하는 코드들을 공통으로 적용할 때.( @을 사용하는 예제  )
+  			</di>
+  		
+  		</spring>
+  		
+  	</com.ppusari>
+    
+  	<webapp>
+  		<actionTag xmlns="액션테그">
+  			<forward>
+  			http://localhost:8888/my/actionTag/forward/main.jsp
+  			</forward>
+  			<include>
+  			http://localhost:8888/my/actionTag/include/main.jsp
+  			</include>
+  		</actionTag>
+  		
+  		<bean xmlns="jsp에서 bean 사용법">
+  			http://localhost:8888/my/bean/index.jsp
+  		</bean>
+  	
+  		<cookie xmlns="쿠키">
+  			http://localhost:8888/my/cookie/login.jsp
+  		</cookie>
+  	
+  		<daoDto xmlns="jsp에서 값을 입력하여 DB에 기록하기">
+  			http://localhost:8888/my/daoDto/memberInsert.jsp
+  		</daoDto>
+  	
+  		<database xmlns="jsp에서 데이터 베이스 접근하기">
+	  		마이에스큐엘 DB http://localhost:8888/my/database/mysql.jsp
+	  		오라클 DB http://localhost:8888/my/database/oracle.jsp
+	  		오라클컨넥션풀 예제 http://localhost:8888/my/database/oracleConnectionPool.jsp
+	  		포스트크래스 DB http://localhost:8888/my/database/postgresql.jsp
+	  		DB를 이용한 로그인 http://localhost:8888/my/database/login/main.jsp (안되고 있음)    		
+  		</database>
+  	
+  		<EL xmlns="EL 표기법">
+  			http://localhost:8888/my/EL/expressionLanguage.jsp
+  			http://localhost:8888/my/EL/objel.jsp  		
+  		</EL>
+  	
+  		<exception xmlns="예외페이지 " >
+  			참조: #exception-1
+  			http://localhost:8888/my/exception/index.jsp
+  		</exception>
+  		
+  		<fileUpload xmlns="파일업로드">
+  			http://localhost:8888/my/fileUpload/fileFormOk.jsp
+  		</fileUpload>
+  	
+  		<jstl xmlns="jstl 표기법">
+  			http://localhost:8888/my/jstl/core.jsp
+  		</jstl>
+  	
+  		<login xmlns="기본 로그인 예제">
+  			http://localhost:8888/my/login/login.html
+  		</login>
+  	
+  		<session xmlns="세션">
+  			http://localhost:8888/my/session/login.jsp (안되고 있음)
+  		</session>
+  	
+  		<web xmlns="웹 기초">
+  			
+  			<jsp xmlns="myResource 사용자 리소스">
+  				http://localhost:8888/my/web/jsp/myResource.jsp
+  			</jsp>
+  			
+  		</web>
+  
+  	</webapp>
+      
+</contents>
+     
+
+  <!-- 010-5157-8848 중고컴퓨터 버리기 -->

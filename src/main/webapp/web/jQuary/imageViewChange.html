@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<style>
+	.hidden{
+		visibility: hidden;
+	}
+	
+</style>
+<script>
+	$(document).ready(function(){
+		$('img').css('width',100);
+		$('img').addClass('hidden');
+		
+		setInterval(function(){
+			$('img').eq(0).appendTo('body')
+			$('img').eq(0).removeClass('hidden');
+			$('img:not(img:eq(0))').addClass('hidden');
+		}, 2000)
+	});
+</script>
+</head>
+<body>
+<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzbtIBGU80HPXFE0bBgob6q3W1RDtRFLiygMoPbSJtl00Ho7r1">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEOXinCV-QVikZJf2Tg8B_QH_L0GnXXHyBgEweWszafvXVLFZFvQ">
+<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3r18QUmwi5hyeVeDZNuCMp-5huF0ebAFrVTDnTEjmRvskd38X9A">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZfcYwYtXWN-ipjV0l-GT6gSs6f7ENJxpYEzA7xXUJ-ANShVx">
+<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQSq29kc_FzaLvJyEFZ9ag0IEI4dKhya2pUJF8Kw_gv5V46YCC2Xw">
+</body>
+</html>
+
+
+
+
+
+
+
+

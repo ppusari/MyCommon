@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$('h1').click(function(){
+		$(this).text($(this).text() + '*');
+	})
+	
+	var h1 = setInterval(function(){
+		$('h1').eq(0).trigger('click'); // 이벤트를 강제로 호출 (어떤 이벤트? click)
+	}, 100);
+	var h2 = setInterval(function(){
+		$('h1').eq(1).trigger('click'); 
+	}, 200);
+	var h3 = setInterval(function(){
+		$('h1').eq(2).trigger('click'); 
+	}, 300);
+	
+	setTimeout(function(){
+		clearInterval(h1);
+		clearInterval(h2);
+		clearInterval(h3);		
+	}, 3000)
+	
+});	
+</script>
+</head>
+<body>
+<h1>Start:</h1>
+<h1>Start:</h1>
+<h1>Start:</h1>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c = "http://www.springframework.org/schema/c"
+	xmlns:p = "http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 생성자와 프로퍼티 값을 동시에 적용 -->
+	<bean id="student3" class="com.ppusari.spring.di.student.Student">
+		<!-- 생성자 적용 -->
+		<constructor-arg value="고양이"/>
+		<constructor-arg value="8"/>
+		<constructor-arg>
+			<list>
+				<value>줄넘기</value>
+				<value>공기놀이</value>
+			</list>
+		</constructor-arg>
+		
+		<!-- 프로퍼티 적용 -->		
+		<property name="height">
+			<value>126</value>
+		</property>		
+		<property name="weight" value="21"/>
+	</bean>
+
+	<!-- c: 으로 시작하는것은 생성자를 초기화 하는 것  (xmlns:c = "http://www.springframework.org/schema/c" 추가)
+	     p: 으로 시작하는것은 프로퍼티를 초기화 하는 것 (xmlns:p = "http://www.springframework.org/schema/p" 추가)
+	         잘 사용되지 않는 방식이다. 
+	-->
+	<bean id="family" class="com.ppusari.spring.di.student.Family" c:papaName="홍아빠" c:mamiName="홍엄마" p:sisterName="홍누나">
+		<property name="brotherName" value="홍오빠"/>
+	</bean>
+
+</beans>

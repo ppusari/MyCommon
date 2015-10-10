@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+	
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+var uri = 'http://localhost:8080/chapter2/server/login.jsp';
+
+
+
+function requestAjaxGet(a, b){
+	$.get(uri,{id:a, pwd:b}).done(function(data, status){
+		alert('get data: '+data);
+		alert('get status: '+status);
+	});
+};
+
+function requestAjaxPost(a, b){
+	$.post(uri, {id:a, pwd:b}, function(data, status){
+		alert('post data: '+data);
+		alert('post status: '+status);		
+	});	
+};
+
+function requestAjax(a,b){
+	$.ajax({
+		url:encodeURI(uri),
+		data:{id:a, pwd:b},
+		type: 'POST',
+		success:function(data){
+			alert('성공시만 호출됨: '+data);
+		},
+		error:function(err){
+			alert('실패시만 호출됨: '+err);			
+		}
+	});
+};
+
+$(document).ready(function(){
+	$('#login').click(function(){
+		var id = $('#id').val();
+		var pwd = $('#pwd').val();
+				
+		requestAjaxGet(id, pwd);	// Get 방식 호출
+		requestAjaxPost(id, pwd);	// Post 방식 호출
+		requestAjax(id, pwd);		// 혼합방식
+	});
+		
+});	
+</script>
+</head>
+<body>
+ID<input type="text" id="id"><br>
+PWD<input type="text" id="pwd"><br>
+<input type="button" value="로그인" id="login"><br>
+
+</body>
+</html>

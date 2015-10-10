@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<style>
+	.hidden2{
+		visibility: hidden;
+	}		
+	div{
+		width: 350px; height:350px;
+		border: 1px solid red;		
+	}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+function sizeControl(){
+		
+	$('#id1 > h1').css({					// 설정 및 가져오기가 모두 attr로 한다.
+		color: 'red',
+		background: 'yellow'			 
+	});
+	
+	$('#id1 > img').width(300);				// 이미지 가로크기 설정.
+	$('#id1 > img').css('height', 300);		// 이미지 세로크기 설정.
+	$('#id1 > img').css('border','2px solid green');
+	$('#id1 > img').attr({					// 설정 및 가져오기가 모두 attr로 한다.
+		width:400,
+		height:350		
+	});
+	
+};
+
+function imageDisplay(){	
+	$('#id2 > img').addClass('hidden2');// 처음에 모두 숨겨라.
+ 
+	setInterval(function(){		
+		$('#id2 > img').eq(0).appendTo('body > #id2')
+		$('#id2 > img').eq(0).removeClass('hidden2');
+		$('#id2 > img:not(#id2 > img:eq(0))').addClass('hidden2'); // 이미지중에 0번째만 제외하고 나머지는 숨겨라.
+	}, 2000)
+};
+
+function appendTest(){
+	$('#id3').append('<table border="1">');
+	$('#id3 > table').append('<tr><th>ID</th><th>NAME</th></tr>');
+};
+
+$(document).ready(function(){
+ 
+ 	sizeControl();
+	imageDisplay();
+	appendTest();
+});	
+</script>
+</head>
+<body>
+	
+	<p>이미지 사이즈 CSS
+	<div id="id1">
+		<h1>header1</h1>
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzbtIBGU80HPXFE0bBgob6q3W1RDtRFLiygMoPbSJtl00Ho7r1">
+	</div> 
+	<p> append and remove
+	<div id="id2">
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzbtIBGU80HPXFE0bBgob6q3W1RDtRFLiygMoPbSJtl00Ho7r1">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEOXinCV-QVikZJf2Tg8B_QH_L0GnXXHyBgEweWszafvXVLFZFvQ">
+		<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3r18QUmwi5hyeVeDZNuCMp-5huF0ebAFrVTDnTEjmRvskd38X9A">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZfcYwYtXWN-ipjV0l-GT6gSs6f7ENJxpYEzA7xXUJ-ANShVx">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQSq29kc_FzaLvJyEFZ9ag0IEI4dKhya2pUJF8Kw_gv5V46YCC2Xw">
+	</div>
+	<p> append로 table추가하기.
+	<div id="id3">
+	
+	</div>
+	
+</body>
+</html>

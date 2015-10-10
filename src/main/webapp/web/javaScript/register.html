@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+function register(f){
+	var id = f.id.value;
+	var name = f.name.value;
+	var age = f.age.value;
+	
+	if (id == null || id == ''){
+		alert('ID is Madatory');
+		f.id.focus();
+		return;  // 해당 되는것만
+	}
+	if ( name == null || name ==''){
+		f.name.focus();
+		return;
+	}
+	
+	var c = confirm('Are you really ...?');
+	if ( c == true){
+		f.action = 'http://localhost:8080/WebStudy/server/register.jsp';
+		f.submit();
+	}
+	
+};
+</script>
+
+</head>
+<body>
+<h1>User Register</h1>
+
+<!-- 자바스크립트나 서버에 전송하기 위해 form 을 사용한다. -->
+<form>
+ID<input type="text" name="id"><br>
+NAME<input type="text" name="name"><br>
+AGE<input type="text" name="age"><br>
+<!-- type이 sumbit 이면  포커스로 할경우 먹히지 않음 -->
+<input type="button" value="Register" onclick="register(this.form);">
+</form>
+</body>
+</html>

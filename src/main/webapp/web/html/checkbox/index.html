@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로컬 스토리지 예제</title>
+<script>
+
+	window.onload = function(){	
+
+		var cat = localStorage.getItem("cat");
+		//alert("cat: " + cat);
+		document.getElementById("cat").checked = (cat == "true") ? true : false;
+
+		var duck = localStorage.getItem("duck");
+		//alert("duck: " + duck);
+		document.getElementById("duck").checked = (duck == "true") ? true : false;	 
+	}
+
+	function onCheckOne(value) {
+		
+		var cat = document.getElementById("cat").checked;
+		//alert("cat: "+ cat);
+		localStorage.setItem("cat", cat)
+		
+		var duck = document.getElementById("duck").checked;
+		//alert("duck: "+ duck);
+		localStorage.setItem("duck", duck)	 		 	
+	}
+
+	function onLocalStorageRemove(){
+		//alert("onLocalStorageRemove");
+		localStorage.clear();
+		onload();
+	}
+	
+</script>
+</head>
+
+<body>
+
+	<input type="checkbox" name="cat" id="cat" onchange="onCheckOne(this.checked)" /> 고양이 <br>
+	<input type="checkbox" name="duck" id="duck" onchange="onCheckOne(this.checked)" /> 오리  <br>
+	<input type="checkbox" name="dog" id="dog" /> 개  <br>
+	
+	<a href="nextPage.html">다음페이지 이동</a> <br>
+	<a onclick="onLocalStorageRemove()">로컬 스토리지 삭제</a>
+	
+</body>
+</html>

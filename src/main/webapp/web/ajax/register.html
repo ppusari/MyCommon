@@ -1,0 +1,43 @@
+<!--  jQuary를 이용하지 않은  Ajax 사용법. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function  register(){
+	var id = document.querySelector('#id').value;
+	var name = document.querySelector('#name').value;
+		
+	// 1. AJAX 객체 생성.
+	var xhr = new XMLHttpRequest()
+	
+	// 2. 서버정보 open
+	var uri = 'http://localhost:8080/WebStudy/server/register.jsp';
+	uri += '?id=' +id+'&name=' +name;
+	xhr.open('GET', uri, false);
+	
+	// 3. send
+	xhr.send();
+	
+	// 4. 결과 받는다.
+	var result = xhr.responseText;
+	
+	var resultArea = document.querySelector('div');
+	resultArea.innerHTML = result;
+	
+};
+</script>
+
+</head>
+<body>
+
+ID<input type="text" id="id"><br>
+NAME<input type="text" id="name"><br>
+<input type="button" value="Register" onclick="register();">
+
+<div>결과</div>
+
+</body>
+</html>

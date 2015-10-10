@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+var person = {	id:'ppusari',
+				name:'조병국',
+		};
+
+window.onload = function(){
+	var h3 = document.querySelector('h3');
+	
+	// 아래처럼 함수를 만들어서 사용할 수 있다.
+	person.print = function(){
+		return '아이디: ' + this.id + '<br>이름: ' + this.name;
+	};
+	
+	//h3.innerHTML = person.id + ' ' + person.name;
+	h3.innerHTML = person.print();	
+	
+};
+</script>
+
+</head>
+<body>
+<h1>Object Data</h1>
+<h3>result</h3>
+</body>
+</html>

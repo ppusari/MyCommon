@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+	//  <-- 선택자  <document가 준비되면 ready를 호출해라.>
+	$(document).ready(function(){
+		$('h1').css('color','red');
+		$('#h1').css('color','blue');
+//		$('.c1').css('color','green').css('background','yellow');
+		$('.c1').css({
+			color:'red',
+			background:'yellow'
+		});
+		
+//		alert($('#h1').text());
+		$('#h1').text('ABC');
+		$('#h1').html('<a href="">Click1</a>');
+		$('#in').val('sample');
+		$('div > h2 > a').click(function(){
+			$(this).text('click2').css('color','gray');
+		});
+	});
+	
+</script>
+</head>
+<body>
+<h1>Header1</h1>
+<h1 id="h1">Header2</h1>
+<h1 class="c1">Header3</h1>
+<input type="text" id="in">
+<div>
+	<h2>
+		<a href="#">Click</a>
+	</h2>
+</div>
+</body>
+</html>

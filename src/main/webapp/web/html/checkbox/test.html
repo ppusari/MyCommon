@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+	<META charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<title>KT시니어</title>
+	<link href="/css/css.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="onLoaded()">
+	<script language="javascript">
+		function onLoaded() {
+			window.Android.JSToNative("1001", "해피온 라디오 가입");
+		}
+		
+		function onOk() {
+			if(document.getElementById("check2").checked && document.getElementById("check3").checked && document.getElementById("check4").checked)
+				window.Android.JSToNative("1003", "RADIO_PERSONAL_INFO,RADIO_SERVICE,RADIO_AGE");
+		}
+		
+		function onCheckAll(value) {
+			document.getElementById("check2").checked = value;
+			document.getElementById("check3").checked = value;
+			document.getElementById("check4").checked = value;
+			
+			enableOk(value);
+		}
+		
+		function onCheckOne(value) {
+			if(document.getElementById("check2").checked && document.getElementById("check3").checked && document.getElementById("check4").checked) {
+				document.getElementById("check1").checked = true;
+				enableOk(true);
+				
+			} else {
+				document.getElementById("check1").checked = false;
+				enableOk(false);
+			}
+		}
+		
+		function enableOk(value) {
+			if(value) {
+				document.getElementById("btnOk").className = "btn_down";
+			} else {
+				document.getElementById("btnOk").className = "btn_down dis";
+			}
+		}
+	</script>
+	<div id="all_wrap">
+    	<div class="copy_wrap">
+			<span class="txt">데이터 소진 없이 음악을 <Br/>
+라디오처럼 24시간 들을 수 있습니다.</span>
+		</div>
+        
+		<div class="tit_wrap2">
+			<span class="tit i_g">해피온 라디오 팩<br>월 <span class="money">1,500원</span></span>
+		</div>
+		
+		<div class="agree2_wrap">
+			<p class="txt"><input type="checkbox" name="" id="check1" class="css-checkbox" onchange="onCheckAll(this.checked)"/>
+			  				  	 <label for="check1" class="css-label"></label>아래 내용을 읽었으며 모두 동의합니다.</span>
+			</p>
+            <div class="box">
+                <ul>
+                    <li><input type="checkbox" name="check_l" id="check2" class="css-checkbox" onchange="onCheckOne(this.checked)"/><label for="check2" class="css-label" ></label>개인 정보 수집/이용 동의 <a href="se-0340-RADIO_PERSONAL_INFO.html"><img src="/images/btn_more.png"  alt="개인 정보 수집/이용 동의이동하기" width="25px" height="25px"></a></li>
+                    <li><input type="checkbox" name="check_l" id="check3" class="css-checkbox" onchange="onCheckOne(this.checked)"/><label for="check3" class="css-label"></label>서비스 이용 약관 <a href="se-0340-RADIO_SERVICE.html"><img src="/images/btn_more.png"  alt="서비스 이용 약관 이동하기" width="25px" height="25px"></a></li>
+                    <li><input type="checkbox" name="check_l" id="check4" class="css-checkbox" onchange="onCheckOne(this.checked)" /><label for="check4" class="css-label"></label>만19세 이상 이용 <a href="se-0340-RADIO_AGE.html"><img src="/images/btn_more.png"  alt="만19세 이상 이용 이동하기" width="25px" height="25px"></a></li>
+                </ul>	
+            </div>
+		</div>	
+		<div class="btn_wrap">
+        <a onclick="onOk()" class="btn_down dis">이용권 구매</a>
+        </div>
+
+	</div>
+</body>
+</html>

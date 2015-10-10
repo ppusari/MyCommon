@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	/** global css **/
+	*{
+		margin:0;
+		padding:0;
+	}
+	a{
+		text-decoration:none;
+	}
+	li{
+		list-style:none;
+	}
+	
+	header{
+		width:900px;
+		height:150px;
+		background:red;
+		margin:0 auto;
+	}
+	#content{
+		width:900px;
+		height:400px;
+		background:gray;
+		margin:0 auto;
+		overflow:hidden;
+	}	
+	#content > #left{
+		width:200px;
+		height:400px;
+		background:aqua;	
+		float:left;
+	}	
+	#content > #center{
+		width:700px;
+		height:400px;
+		background:green;
+		float:right;	
+	}
+	footer{
+		width:900px;
+		height:150px;
+		background:black;
+		margin:0 auto;	
+	}
+</style>
+</head>
+<body>
+	<header>Header</header>	
+	
+	<div id="content">
+		<div id = "left">
+			Left
+		</div>
+		<div id = "center">
+			Center
+		</div>		
+	</div>
+	<footer>Footer</footer>
+</body>
+</html>

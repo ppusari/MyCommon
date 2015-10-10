@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script>
+
+var createRequest = function(){
+	var xhr = null;	
+	try {
+		xhr = new XMLHttpRequest();	
+	} catch (e) {
+		xhr = new ActiveXObject('Msxml2.XMLHTTP7.0');
+	}
+	return xhr;
+};
+
+var displayXML = function(result){	
+	var items = result.querySelectorAll('item');
+	var resultArea = document.querySelector('div');	
+	var output = '';	  
+ 
+	for (var i=0; i<items.length; i++) {
+		var title = items[i].querySelector('title').innerHTML;		
+		var image = items[i].querySelector('image').innerHTML;
+		var lprice = items[i].querySelector('lprice').innerHTML;
+		var hprice = items[i].querySelector('hprice').innerHTML;
+		
+		output += '<img width="50" src="'+image+'">';
+		output += title + '' + lprice + ' ' + hprice + '<br>';	
+	}
+	
+	resultArea.innerHTML = output; 
+};
+
+var requestAjax = function(item){		
+	var xhr = createRequest();
+	
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200){ // 정상
+				var result = xhr.responseXML;				
+				displayXML(result);
+			}
+			else{
+				alert('error:' + xhr.status )
+			}
+		}
+	};
+
+	// 크롬 실행파일 뒤에 인자값 --disable-web-security 을 줘야함. ( 다른 웹에서 다른웹을 접근하니까. 보안을 없앰)
+	var uri = 'http://openapi.naver.com/search?key=3ef37ccfa818d4f6af407d2db539633b&query='+item+'&display=5&start=1&target=shop&sort=sim'; 
+	xhr.open('GET', encodeURI(uri),false);
+	xhr.send(); // 보내고 받으면 onreadystatechange
+};
+
+var getData = function(){
+	var item = document.querySelector('#item');	
+	requestAjax(item.value);	
+};
+
+</script>
+
+</head>
+<body>
+<p>// 크롬 실행파일 뒤에 인자값 --disable-web-security 을 줘야함. ( 다른 웹에서 다른웹을 접근하니까. 보안을 없앰)</p>
+<!-- form 일때는 id="@@@" 로 가져온다. -->
+<input type="text" id="item">
+<h1 onclick="getData();">Naver</h1>
+<div></div>
+
+</body>
+</html>

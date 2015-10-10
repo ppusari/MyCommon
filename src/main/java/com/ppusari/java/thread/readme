@@ -1,0 +1,8 @@
+interrupt() // sleep(), join() 에 의해 일시정지인 쓰레드를 실행대기상태로 만든다.
+join()		// 쓰레드가 끝날때까지 기다린다.
+
+일시정지: suspend, sleep, wait, join, I/O block
+풀어주기: resume, notify, interrupt, time-out
+
+[wait, notify, notifyAll] 함수는 synchronized블록 내에서만 사용할 수 있다.
+ 

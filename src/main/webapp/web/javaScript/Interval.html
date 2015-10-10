@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+// 이벤트가 발생하면 함수를 호출하라.
+window.onload = function(){		
+	var h3 = document.querySelector('h3');	
+	var a = function(){
+		var date = new Date();
+		h3.innerHTML = date;
+//		h3.innerHTML = date.getHours() + ' ' date.getMinutes() + ' ' + date.getSeconds();		
+	};
+	
+	setInterval(a, 1000)
+	
+};
+</script>
+
+</head>
+<body>
+
+<h1>Clock</h1>
+<h3></h3>
+<h4></h4>
+
+</body>
+</html>

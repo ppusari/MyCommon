@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+
+function localTime(){
+	var lt = document.querySelector('#lt');
+	var output = '';
+	
+	setInterval(function(){
+		var date = new Date();
+		output = date;		
+		lt.innerHTML = output;		
+	}, 1000);
+};
+
+var serverCall = function(){
+	var st = document.querySelector('#st');
+	var output = '';
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','http://localhost:8080/WebStudy/server/date.jsp', false); // true 면 동기
+	xhr.send();
+	output = xhr.responseText;
+	st.innerHTML = output;			
+};
+
+function serverTime(){	
+	setInterval(serverCall, 1000)
+};
+
+window.onload = function(){
+	localTime();
+	serverTime();
+};
+
+</script>
+
+</head>
+
+<body>
+<h1>Server Time</h1>
+<h2 id="st"></h2>
+
+<h1>Local Time</h1>
+<h2 id="lt"></h2>
+
+</body>
+</html>

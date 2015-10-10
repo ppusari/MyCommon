@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+	var worker = null;
+
+	function calc() {
+		if (worker) {
+			worker.terminate();
+		}
+
+		var num = $('#num').val();
+
+		worker = new Worker('worker.js'); // Worker 은 HTML5 에서 제공되는것.
+
+		worker.onmessage = function(e) { // js에서 보낸 데이터를 받는곳.
+			$('#sum').text('Sum: ' + e.data);
+			alert(e.data);
+		};
+		worker.error = function(e) {
+		};
+		worker.postMessage(num); // js에서 onmessage 가 받는다.(처리 후 받는 함수는 위에 있어야 한다 )
+
+	};
+</script>
+</head>
+<body>
+	<input type="text" id="num">
+	<button onclick="calc();">Calc</button>
+	<p id="sum">Sum...</p>
+</body>
+</html>

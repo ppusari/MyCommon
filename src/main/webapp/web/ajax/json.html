@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+
+var createRequest = function(){
+	var xhr = null;	
+	try {
+		xhr = new XMLHttpRequest();	
+	} catch (e) {
+		xhr = new ActiveXObject('Msxml2.XMLHTTP7.0');
+	}
+	return xhr;
+};
+
+ 
+
+function display(data){
+
+	var resultArea = document.querySelector('div');
+	var output = '';
+	
+	for(var i=0; i < data.length; i++){
+		with(data[i]){
+			output += '<h3>';
+			output += id+' '+name;
+			output += '</h3>';
+			
+		}
+	}
+	
+	resultArea.innerHTML = output;	
+};
+
+
+
+
+var requestAjax = function(){		
+	var xhr = createRequest();	
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200){ // 정상
+				var result = xhr.responseText;  // json 데이터는 text 형태로 온다.				
+				var jsonData = eval(result); // json 데이터를 오브젝트로 변경하는 함수.				
+				display(jsonData);				
+			}
+			else{
+				alert('error:' + xhr.status )
+			}
+		}
+	};
+
+	var uri = 'http://localhost:8080/WebStudy/server/json.jsp'; 
+	xhr.open('GET',uri,false);
+	xhr.send(); // 보내고 수신받는곳은 onreadystatechange 함수다.
+};
+
+var getData = function(){
+	requestAjax();
+};
+
+</script>
+
+</head>
+<body>
+<h2 onclick="getData();">GET DATA</h2>
+<div></div>
+
+</body>
+</html>

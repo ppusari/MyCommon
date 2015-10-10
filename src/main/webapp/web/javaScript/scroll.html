@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+
+function makeItem(){	
+	for (var i= 0; i < 10; i++) {  // int 라고하면 안됨.
+		$('body').append('<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQerCg4AFShu0cJ65YuF67_6iswCS62HTh0DZ25EWLBN04VnnHYfA">');		
+	}
+}; 
+
+$(document).ready(function(){
+	
+	makeItem();
+	
+	// 스크롤이 동작하면 호출됨.
+	$(window).scroll(function(){
+		
+		var scrollH = $(window).scrollTop() + $(window).height();
+		var docH = $(document).height();
+		 
+		if (scrollH + 40 >= docH){
+			makeItem();		
+		}	
+	}); 
+});	
+</script>
+</head>
+<body>
+
+</body>
+</html>

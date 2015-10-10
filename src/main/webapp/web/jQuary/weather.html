@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <link rel="stylesheet" type="text/css" href="https://s1.yimg.com/zz/combo?os/mit/media/m/content/sfl-notifier-min-ee15495.css&amp;yui:3.16.0/build/widget-base/assets/skins/sam/widget-base.css&amp;yui:3.16.0/build/autocomplete-list/assets/skins/sam/autocomplete-list.css&amp;yui:3.16.0/build/widget-stack/assets/skins/sam/widget-stack.css&amp;yui:3.16.0/build/overlay/assets/skins/sam/overlay.css&amp;os/mit/media/m/weather/location-search-assist-desktop-min-290c3bc.css&amp;os/mit/media/m/weather/next-icons-desktop-min-18a8bb9.css&amp;os/mit/media/m/weather/lead-desktop-min-45590ed.css&amp;os/mit/media/m/weather/weather-conditions-min-3f14c58.css&amp;os/mit/media/m/weather/background-manager-desktop-min-79f0759.css&amp;os/mit/media/m/weather/alerts-desktop-min-dfee6c3.css&amp;os/mit/media/m/header/gta-min-5f744e6.css&amp;os/mit/media/m/content_index/generic-listings-desktop-min-2710c63.css&amp;os/mit/media/m/weather/partnerlinks-desktop-min-d4fb8ce.css&amp;os/mit/media/m/content_social/media-content-share-buttons-int-min-0116754.css"> -->
+<style type="text/css">
+.a {
+	width: 400px;
+	height: 400px;
+	border: 2px solid black;
+	float: left;
+}
+
+h1 {
+	background-color: black;
+	color: white;
+}
+</style>
+<!-- 구글지도를 추가하기 -->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+	function cWeather(data) {
+		var city = $(data).find('yweather://location,location').attr('city');
+		var country = $(data).find('yweather://location,location').attr(
+				'country');
+
+		$('#cw').append('<h3>');
+		$('#cw').append('<h3>');
+
+		$('#cw > h3').eq(0).text('도시: '+city);
+		$('#cw > h3').eq(1).text('나라: '+country);
+
+	};
+	function fWeather(data) {
+		var yweather = $(data).find('yweather://forecast, forecast');
+		var cnt = 0;
+		$(yweather).each(function() {
+			var day = $(this).attr('day');
+			var date = $(this).attr('date');
+			var low = $(this).attr('low');
+			var high = $(this).attr('high');
+			var text = $(this).attr('text');
+			var code = $(this).attr('code');
+
+			var daytext = '';
+			daytext += '요일: ' + day;
+			//			daytext += ' 날짜: ' + date;
+			daytext += ' 최저기온: ' + low;
+			daytext += ' 최고기온: ' + high;
+
+			$('#fw > ul > li').eq(cnt++).text(daytext);
+					
+
+		});
+
+	};
+	function cMap(data) {
+		var lat = $(data).find('geo:\\lat,lat').text(); // jQuary 에서 특수무자 처리를 위해
+		var lng = $(data).find('geo:\\long,long').text(); // jQuary 에서 특수무자 처리를 위해
+		var center = null;
+
+		center = new google.maps.LatLng(lat, lng);
+
+		var map = document.querySelector('#map');
+		var maps = new google.maps.Map(map, {
+			mapTypeId : google.maps.MapTypeId.ROADMAP,
+			zoom : 17,
+			center : center
+		});
+	};
+
+	$(document).ready()
+	{
+		var uri = 'http://weather.yahooapis.com/forecastrss?w=1132599&u=c';
+		$.ajax({
+			url : encodeURI(uri),
+			success : function(data) { // data = xml
+				cWeather(data);
+				fWeather(data);
+				cMap(data);
+			}
+		});
+	};
+</script>
+</head>
+<body>
+
+	<div id="cw" class="a"></div>
+	<div id="fw" class="a">
+		<h1>Forecast</h1>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div id="map" class="a"></div>
+
+</body>
+</html>

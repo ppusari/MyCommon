@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<context:annotation-config/>  <!-- 여기 Xml파일에 밑에줄  Java파일을 포함시키는 지시자 -->
+	<bean class="com.ppusari.spring.di.javaInXml.ApplicationConfig"/>
+	
+	<!-- 객체 2 -->
+	<bean id="student3" class="com.ppusari.spring.di.student.Student">
+		<constructor-arg value="정충길"/>
+		<constructor-arg value="35"/>
+		<constructor-arg>
+			<list>
+				<value>헬스</value>
+				<value>요리</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="181"/>
+		<property name="weight" value="75"/>		
+	</bean>
+	
+</beans>

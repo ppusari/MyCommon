@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+/** Global CSS **************************************************************/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: red;
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+/** Header CSS **************************************************************/
+header, footer {
+	width: 960px;
+	height: 140px;
+	margin: 0 auto; /** 0은 x출  auto는 y축 **/
+	position: relative;
+}
+
+header>hgroup {
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	font-family: 'Changa One', cursive;
+}
+
+header>#top_nav {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-family: 'Righteous', cursive;
+}
+
+footer {
+	background: navy;
+}
+
+header {
+	background: gray;
+}
+
+/** Section CSS **************************************************************/
+/** Footer CSS **************************************************************/
+/** Button CSS **************************************************************/

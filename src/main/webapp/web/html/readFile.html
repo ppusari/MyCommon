@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+
+function readFile(){
+	var files = document.getElementById('input').files;		
+	var file = files[0];
+	var reader = new FileReader(); // HTML5에서 제공됨.
+	
+	reader.onload = function(){	// 다 읽으면 이곳으로 호출됨. (대용량 파일을 서버로 전송할 때 사용)
+		alert('asdf');
+		$('#result').text(reader.result);	
+	};
+	
+	reader.readAsText(file, 'euc-kr');
+};
+ 
+</script>
+</head>
+<body>
+	<input type="file" id="input" name="input"><br>
+	<button id="readfile" onclick="readFile();">READ</button><br>
+	<textarea rows="6" cols="60" id="result"></textarea><br>
+</body>
+</html>

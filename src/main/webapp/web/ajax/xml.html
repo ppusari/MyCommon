@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+var createRequest = function(){
+	var xhr = null;	
+	try {
+		xhr = new XMLHttpRequest();	
+	} catch (e) {
+		xhr = new ActiveXObject('Msxml2.XMLHTTP7.0');
+	}
+	return xhr;
+};
+
+function displayXML(result){
+	var persons = result.querySelectorAll('person');
+	var resultArea = document.querySelector('div');
+	var output = '';
+	
+	/** for ( var i in iterable) {} for 방식을 사용하면 데이터가 잘 동작을 안함.**/
+	for (var i = 0; i < persons.length; i++) {	
+		var id = persons[i].querySelector('id').innerHTML;		
+		var name = persons[i].querySelector('name').innerHTML;
+		var age = persons[i].querySelector('age').innerHTML;		
+ 		
+		output += '<h3>';
+		output += id +' ' + name + ' ' + age;
+		output += '</3>';		
+	}
+	
+	resultArea.innerHTML = output;	
+};
+
+var requestAjax = function(){		
+	var xhr = createRequest();	
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200){ // 정상
+				var result = xhr.responseXML;  // doom object 가 반환됨 XML
+				displayXML(result);
+			}
+			else{
+				alert('error:' + xhr.status )
+			}
+		}
+	};
+
+	var uri = 'http://localhost:8080/WebStudy/server/xml.jsp'; 
+	xhr.open('GET',uri,false);
+	xhr.send(); // 보내고 수신받는곳은 onreadystatechange 함수다.
+};
+
+var getData = function(){
+	requestAjax();	
+};
+
+</script>
+
+</head>
+<body>
+<h2 onclick="getData();">GET DATA</h2>
+<div id="resultArea"></div>
+
+</body>
+</html>

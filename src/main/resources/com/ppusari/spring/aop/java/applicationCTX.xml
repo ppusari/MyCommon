@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<!-- AOP를 사용하기 위한 사전 준비사항
+		1. 의존설정: pom.xml에  AOP를 등록
+		2. Namespaces 등록: aop를 등록한다.(xmlns:aop="http://www.springframework.org/schema/aop")
+	-->
+
+	<aop:aspectj-autoproxy/>
+	
+	<bean id="logAop" class="com.ppusari.spring.aop.java.LogAop"/>
+	
+	<bean id="student" class="com.ppusari.spring.aop.java.Student">
+		<property name="name" value="조병국"/>
+		<property name="age" value="10"/>
+		<property name="gradeNum" value="3"/>
+		<property name="classNum" value="5"/>
+	</bean>
+	
+	<bean id="worker" class="com.ppusari.spring.aop.java.Worker">
+		<property name="name" value="고양이"/>
+		<property name="age" value="7"/>
+		<property name="job" value="도둑"/>
+	</bean>
+
+</beans>

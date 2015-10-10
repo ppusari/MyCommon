@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+// 함수 선언
+function calc(a,b,c){
+	var result = 0;	// var변수는 항상 초기값을 입력해줘야 이게 숫자인지 스트링인지 알기 편하다.
+	result = a()+b()+c;
+	alert(result);	
+};
+
+// 함수호출
+calc(function(){
+	return 100;	
+}, function(){
+	return 200;
+}, 1000); // 세미콜론을 마지막에 안찍어도 에러가 나지 않지만 햇갈리지 않기 위해서는 반드시 찍어줘야한다. 
+
+// 
+
+</script>
+
+</head>
+<body>
+
+
+</body>
+</html>

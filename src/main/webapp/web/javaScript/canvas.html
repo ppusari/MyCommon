@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	canvas{
+		width:300px;
+		height:300px;
+		border:2px solid red;		
+		background:yellow;
+	}
+</style>
+<script type="text/javascript">
+
+<!-- body 부분이 출력된 후 아래 함수가 자동으로 호출된다. -->
+window.onload = function(){
+	var c = document.getElementById('mycanvas');
+	var ctx = c.getContext('2d');
+	
+	ctx.lineWidth=20;
+	ctx.beginPath();
+	ctx.moveTo(20,20);
+	ctx.lineTo(200,200);
+	ctx.stroke();
+};   
+</script>
+</head>
+
+<body>
+<h1>Canvas Test</h1>
+<canvas id="mycanvas"></canvas>
+
+</body>
+</html>

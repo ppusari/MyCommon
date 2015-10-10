@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+	table{
+		background: red;
+	}	
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+
+function display(data){
+	var output = '';
+	output += '<table><tr><th>ID</th><th>NAME</th></tr>'	
+		
+	// json 데이터로 된 var은 오브젝트로 넘어온다.
+	$(data).each(function(index, item){	// 오브젝트에 있는 데이터가 function 함수를 여러번 호출해준다.
+		//output += item.id + ' ' + item.name; with 문을 쓰지 않으면 이렇게 가져와야한다.
+		with(item){	// javascript 함수
+			output += '<tr>';
+			output += '<td>' + id   + '</td>';
+			output += '<td>' + name + '</td>';			
+			output += '</td>';
+		}
+	});				
+	
+	$('div').html(output); 
+};
+
+$(document).ready(function(){
+	
+	var uri = 'http://localhost:8080/WebStudy/server/json.jsp';
+	
+	$.ajax({ // ajax 를 이용하여 가져올때는 text로 가저오기 때문에
+		url:encodeURI(uri),
+		type: 'POST',
+		success: function(data){
+			var dataJson = eval(data); // 택스트로 넘어온것을 오브젝트로 만들어야한다.
+			display(dataJson);			
+		},
+		error: function(err){
+			alert(err);
+		}
+	});
+	
+	
+	// 아래처럼 가져오도록 해보다.
+/* 	$.getJSON(uri, function(data) {
+		display(data);
+	});
+ */		
+});	
+</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

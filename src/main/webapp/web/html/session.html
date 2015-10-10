@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+
+	// 브라우저가 삭제될때까지 유지한다.
+	function locals() {
+		if (!localStorage.count) { // HTML5 에서 제공해주는 것 (localStorage)
+			localStorage.count = 0;
+		}
+		localStorage.count = parseInt(localStorage.count) + 1;
+		$('#local').text(localStorage.count);
+	};
+	function sessions() {
+		if (!sessionStorage.count) { // HTML5 에서 제공해주는 것 (localStorage)
+			sessionStorage.count = 0;
+		}
+		sessionStorage.count = parseInt(sessionStorage.count) + 1;
+		$('#session').text(sessionStorage.count);
+	};
+
+	$(document).ready(function() {
+
+	});
+</script>
+</head>
+<body>
+	<p id="local">Local</p>
+	<input type="button" value="local" onclick="locals();">
+	<p id="session">Local</p>
+	<input type="button" value="session" onclick="sessions();">
+
+</body>
+</html>

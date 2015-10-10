@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<!-- 구글지도를 추가하기 -->
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+<script>
+	
+	$(document).ready(function() {
+		
+		function getPosition() {
+			var geo = window.navigator.geolocation;
+			var center = null;
+			
+			function success(position){				
+			 
+				center = new google.maps.LatLng(
+						position.coords.latitude,
+						position.coords.longitude );
+		 
+				
+				$('#map').css({
+					width:'300px',
+					height:'300px',
+					border:'2px solid red'						
+				});
+				
+				var map = document.querySelector('#map');
+				var maps = new google.maps.Map(
+						map,{
+							mapTypeId:google.maps.MapTypeId.ROADMAP,
+							zoom:17,
+							center:center
+						});
+				
+				
+			};
+			function error(e){
+				
+				alert(e);
+			};			
+			geo.watchPosition(success, error,{
+				enableHighAccuracy: true, // 가장 좋은 곳을 찾아서 가져옴
+				timeout:5000,
+				maximumAge:0
+				
+			});  
+		};
+		
+		$('h3').click(function() {
+			getPosition();
+
+		});
+	});
+</script>
+</head>
+<body>
+	<h3>Current Position</h3>
+	<div id="map"></div>
+</body>
+</html>

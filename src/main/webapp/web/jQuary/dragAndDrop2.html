@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#main {
+	width: 600px;
+	height: 250px;
+	border: 2px solid blue;
+}
+
+#main>div {
+	float: left;
+	margin: 30px;
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>
+	function dragAndDrop0() {
+		var main = document.querySelector('#main');
+
+		$('#item').attr('draggable', 'true');
+		$('#cart').attr('draggable', 'true');
+		
+		main.ondragstart = function(e) {
+			e.dataTransfer.setDat('main', e.target.id);
+		};
+		main.ondragover = function(e) {
+			e.preventDefault();
+		};
+		main.ondrop = function(e) {
+			var main = e.dataTransfer.getData('main');
+			$('#main').append(document.getElementById(main));
+		};
+	};
+	function dragAndDrop1() {
+		var img = document.querySelector('#item');
+		var cart = document.querySelector('#cart');
+		 
+		$('#item > ul > li').attr('draggable', 'true');
+		$('#cart > ul > li').attr('draggable', 'true'); 
+ 
+		item.ondragstart = function(e) {
+			e.dataTransfer.setData('item', e.target.id);
+		};
+		cart.ondragover = function(e) {
+			e.preventDefault(); // 이것을 해줘야 ondrop 함수가 먹힌다.
+		};
+		cart.ondrop = function(e) {
+			var item = e.dataTransfer.getData('item');
+			$('#cart > ul').append(document.getElementById(item));
+		};
+	};
+
+	function dragAndDrop2() {
+		var img = document.querySelector('#item');
+		var cart = document.querySelector('#cart');
+
+		$('#item > ul > li').attr('draggable', 'true');
+		$('#cart > ul > li').attr('draggable', 'true');
+
+		cart.ondragstart = function(e) { // cart변경
+			e.dataTransfer.setData('cart', e.target.id); // cart변경
+		};
+		item.ondragover = function(e) { // item변경
+			e.preventDefault();
+		};
+		item.ondrop = function(e) { // item변경
+			var item = e.dataTransfer.getData('cart'); // cart변경
+			$('#item > ul').append(document.getElementById(item));
+		};
+	};
+
+	$(document).ready(function() {
+		dragAndDrop0(); // main div를 대상으로 (좀 이상함 그냥 제거하던지 고치던지 하자.)
+		dragAndDrop1(); // -> 방향 
+		dragAndDrop2(); // <- 방향
+	});
+</script>
+</head>
+<body>
+	<div id="main">
+		<div id="item">
+			<ul>
+				<li id="k1">조병국</li>
+				<li id="k1">고양이</li>
+				<li id="k2">라바</li>
+				<li id="k3">냐옹이</li>
+				<li id="k4">멍뭉이</li>
+			</ul>
+		</div>
+		<div id="cart">
+			<ul></ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script>	
+	var data = [
+	            {id:'id01',name:'name01'},
+	            {id:'id02',name:'name02'},
+	            {id:'id03',name:'name03'},
+	            {id:'id04',name:'name04'},
+	            {id:'id05',name:'name05'}
+	            ]; // 배열
+	
+	$(document).ready(function(){
+		var output = '';
+		
+		// json 데이터로 된 var은 오브젝트로 넘어온다.
+		$(data).each(function(index, item){	// 오브젝트에 있는 데이터가 function 함수를 여러번 호출해준다.
+			output += '<p>';
+			//output += item.id + ' ' + item.name;
+			with(item){	// javascript 함수
+				output += id + ' ' + name;					
+			}
+			output += '</p>';
+		});						
+		
+		$('div').html(output);
+	});
+</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
