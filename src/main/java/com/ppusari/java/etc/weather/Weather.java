@@ -1,7 +1,7 @@
 // http://noritersand.tistory.com/240
-	
-package com.ppusari.java.etc.weather;
 
+package com.ppusari.java.etc.weather;
+	
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
@@ -24,12 +24,7 @@ public class Weather {
 	 
 	// 인코딩
 	// http://coderstoolbox.net/string/#!encoding=url&action=decode&charset=utf_8
-		
-	// 회사인증키
-	// Y6CGhVoKI0kmtQXjBaE0TKDIiLd7MPnOPTWeONZO2bc%2FtkKPr%2BmBoWUMjoT%2Bz%2FwY1qMFdatdoJC3JGi9rPqb5w%3D%3D
-	// Y6CGhVoKI0kmtQXjBaE0TKDIiLd7MPnOPTWeONZO2bc/tkKPr+mBoWUMjoT+z/wY1qMFdatdoJC3JGi9rPqb5w==
-	// http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService/ForecastGrib?ServiceKey=Y6CGhVoKI0kmtQXjBaE0TKDIiLd7MPnOPTWeONZO2bc%2FtkKPr%2BmBoWUMjoT%2Bz%2FwY1qMFdatdoJC3JGi9rPqb5w%3D%3D&base_date=20151003&base_time=1000&nx=92&ny=131&_type=json
-		
+
 	// 개인 인증키
 	// vl1xOQtbethZX1ZYsA66YjiQq3g%2F%2F5pn9SoBsKVtEW1YiyDYCBUJwxr9RtURdu3nhEriuIjpWjKZmGPU9bHMzw%3D%3D
 	// vl1xOQtbethZX1ZYsA66YjiQq3g//5pn9SoBsKVtEW1YiyDYCBUJwxr9RtURdu3nhEriuIjpWjKZmGPU9bHMzw==
