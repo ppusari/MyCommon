@@ -28,6 +28,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="lib" path="lib/java-json.jar"/>
 	<classpathentry kind="lib" path="lib/mousehook/MouseHook.jar"/>
+	<classpathentry kind="lib" path="E:/bigData/SourceCode/Java/MyCommons/MyCommons/lib/excel/poi-3.10.1-20140818.jar"/>
 	<classpathentry kind="lib" path="E:/bigData/SourceCode/Java/MyCommons/MyCommons/lib/fileUpload/cos.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
